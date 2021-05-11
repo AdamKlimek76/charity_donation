@@ -12,7 +12,9 @@
 
         <ul>
             <%@ include file="header_menu.jsp" %>
-            <li><a href="#" class="btn btn--without-border">Fundacje i organizacje</a></li>
+
+            <li><a href="form.html" class="btn btn--without-border">Przekaż dary</a></li>
+
             <%@ include file="header_menu_contact.jsp" %>
 
         </ul>
