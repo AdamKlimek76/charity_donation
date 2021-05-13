@@ -1,6 +1,7 @@
 package pl.coderslab.charity.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -10,9 +11,9 @@ public class Institution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty
+    @NotBlank
     private String name;
-    @NotEmpty
+    @NotBlank
     private String description;
 
     public Institution(String name, String description) {

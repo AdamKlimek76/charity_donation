@@ -2,7 +2,9 @@ package pl.coderslab.charity.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -15,20 +17,24 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Min(1)
+    @NotNull
     private Integer quantity;
     @ManyToMany
+    @NotEmpty
     private List<Category> categories;
     @ManyToOne
+    @NotNull
     private Institution institution;
 
     private String street;
-    @NotEmpty
+    @NotBlank
     private String city;
-    @NotEmpty
+    @NotBlank
     private String zipCode;
 
+    @NotNull
     private LocalDate pickUpDate;
-
+    @NotNull
     private LocalTime pickUpTime;
 
     private String pickUpComment;
