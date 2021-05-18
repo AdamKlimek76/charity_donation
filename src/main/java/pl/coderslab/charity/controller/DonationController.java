@@ -27,7 +27,7 @@ public class DonationController {
         this.donationService = donationService;
     }
 
-    @GetMapping("add")
+    @GetMapping("/add")
     public String showDonationForm(Model model) {
         model.addAttribute("donationToAdd", new Donation());
 
@@ -36,7 +36,7 @@ public class DonationController {
 
     @PostMapping("/add")
     public String addDonation(@ModelAttribute("donationToAdd")
-            @Valid Donation donation, BindingResult bindingResult) {
+                              @Valid Donation donation, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return "form";
@@ -51,7 +51,7 @@ public class DonationController {
     }
 
     @ModelAttribute("institutions")
-    public List<Institution>institutions(){
+    public List<Institution> institutions() {
         return institutionService.showAll();
     }
 
