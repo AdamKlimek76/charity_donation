@@ -42,14 +42,20 @@ public class DonationService implements CrudService<Donation> {
         return donationRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
+    /*
     public Integer showQuantity(){
         return donationRepository.findAll()
                 .stream()
-                .mapToInt(entity->entity.getQuantity())
+                .mapToInt(Donation::getQuantity)
                 .sum();
     }
+     */
 
-    public Integer showDonationsNumber(){
-        return donationRepository.countDonationByIdIsNotNull();
+    public Long showQuantity() {
+        return donationRepository.countBags();
+    }
+
+    public Long showDonationsNumber() {
+        return donationRepository.count();
     }
 }

@@ -13,7 +13,8 @@
         <ul>
             <%@ include file="header_menu.jsp" %>
 
-            <li><a href="form.html" class="btn btn--without-border">Przekaż dary</a></li>
+            <li><a href="${pageContext.request.contextPath}/donation/add" class="btn btn--without-border">Przekaż
+                dary</a></li>
 
             <%@ include file="header_menu_contact.jsp" %>
 
@@ -99,19 +100,20 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
-            <li>
-                <c:forEach items="${institutions}" var="institution"
-                           varStatus="theCount">
+
+            <c:forEach items="${institutions}" var="institution"
+                       varStatus="theCount">
+                <c:if test="${theCount.count%2==1}">
+                    <li>
+                </c:if>
                 <div class="col">
                     <div class="title"><c:out value="${institution.name}"/></div>
                     <div class="subtitle"><c:out value="${institution.description}"/></div>
                 </div>
                 <c:if test="${theCount.count%2==0}">
-            </li>
-            <li>
+                    </li>
                 </c:if>
-                </c:forEach>
-            </li>
+            </c:forEach>
 
         </ul>
     </div>

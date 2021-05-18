@@ -25,10 +25,10 @@ public class HomeController {
         List<Institution> institutions = institutionService.showAll();
         model.addAttribute("institutions", institutions);
 
-        Integer quantity = donationService.showQuantity();
+        Long quantity = donationService.showQuantity();
         model.addAttribute("quantity", quantity);
 
-        Integer donationsNumber=donationService.showDonationsNumber();
+        Long donationsNumber=donationService.showDonationsNumber();
         model.addAttribute("donationsNumber", donationsNumber);
 
         return "index";

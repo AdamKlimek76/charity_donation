@@ -598,14 +598,14 @@ form .form-group--checkbox label {
 }
 
 /* line 58, scss/modules/_forms.scss */
-form .form-group--checkbox input {
+form .form-group--checkbox checkboxes {
   position: absolute;
   opacity: 0;
   display: none;
 }
 
 /* line 64, scss/modules/_forms.scss */
-form .form-group--checkbox input:checked + .checkbox {
+form .form-group--checkbox checkboxes:checked + .checkbox {
   background-color: #f9c910;
 }
 

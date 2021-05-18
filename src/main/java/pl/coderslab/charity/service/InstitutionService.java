@@ -1,5 +1,6 @@
 package pl.coderslab.charity.service;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.model.Institution;
 import pl.coderslab.charity.repository.InstitutionRepository;
@@ -34,7 +35,7 @@ public class InstitutionService implements CrudService<Institution> {
 
     @Override
     public List<Institution> showAll() {
-        return institutionRepository.findAll();
+        return institutionRepository.findAll(PageRequest.of(0,4)).getContent();
     }
 
     @Override
