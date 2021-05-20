@@ -76,7 +76,7 @@
 
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
-                <form:hidden path="id"/>
+
 
                 <c:forEach items="${categories}" var="category">
                     <div class="form-group form-group--checkbox">
