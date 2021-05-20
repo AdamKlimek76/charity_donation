@@ -1,11 +1,13 @@
 package pl.coderslab.charity.service;
 
+import org.springframework.stereotype.Service;
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.repository.DonationRepository;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
+@Service
 public class DonationService implements CrudService<Donation> {
 
     private final DonationRepository donationRepository;
@@ -38,5 +40,22 @@ public class DonationService implements CrudService<Donation> {
     @Override
     public Donation showById(long id) {
         return donationRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    }
+
+    /*
+    public Integer showQuantity(){
+        return donationRepository.findAll()
+                .stream()
+                .mapToInt(Donation::getQuantity)
+                .sum();
+    }
+     */
+
+    public Long showQuantity() {
+        return donationRepository.countBags();
+    }
+
+    public Long showDonationsNumber() {
+        return donationRepository.count();
     }
 }

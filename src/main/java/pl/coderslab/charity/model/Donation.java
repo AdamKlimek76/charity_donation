@@ -1,10 +1,9 @@
 package pl.coderslab.charity.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -33,11 +32,16 @@ public class Donation {
     private String zipCode;
 
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
     @NotNull
     private LocalTime pickUpTime;
 
     private String pickUpComment;
+
+    @NotBlank
+    @Pattern(regexp = "[0-9]{9}")
+    private String phoneNumber;
 
     public Donation(Integer quantity,
                     List<Category> categories,
@@ -47,7 +51,8 @@ public class Donation {
                     String zipCode,
                     LocalDate pickUpDate,
                     LocalTime pickUpTime,
-                    String pickUpComment) {
+                    String pickUpComment,
+                    String phoneNumber) {
         this.quantity = quantity;
         this.categories = categories;
         this.institution = institution;
@@ -57,6 +62,7 @@ public class Donation {
         this.pickUpDate = pickUpDate;
         this.pickUpTime = pickUpTime;
         this.pickUpComment = pickUpComment;
+        this.phoneNumber=phoneNumber;
     }
 
     public Donation(){}
@@ -139,5 +145,29 @@ public class Donation {
 
     public void setPickUpComment(String pickUpComment) {
         this.pickUpComment = pickUpComment;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Donation{" +
+                "id=" + id +
+                ", quantity=" + quantity +
+                ", categories=" + categories +
+                ", institution=" + institution +
+                ", street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", pickUpDate=" + pickUpDate +
+                ", pickUpTime=" + pickUpTime +
+                ", pickUpComment='" + pickUpComment + '\'' +
+                '}';
     }
 }
