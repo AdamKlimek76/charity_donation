@@ -33,5 +33,13 @@ public class HomeController {
 
         return "index";
     }
+
+    @GetMapping("/register")
+    public String registerAction(Model model) {
+
+
+        return "register";
+    }
+
 }
 
