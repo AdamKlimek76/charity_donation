@@ -10,7 +10,7 @@
 <header class="header--main-page">
     <nav class="container container--70">
         <%@ include file="header_log.jsp" %>
-
+        <%@ include file="header_user_profile.jsp" %>
         <ul>
             <%@ include file="header_menu.jsp" %>
 

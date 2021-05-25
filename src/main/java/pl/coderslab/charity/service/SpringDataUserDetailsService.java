@@ -22,7 +22,9 @@ public class SpringDataUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userService.findByUserName(username);
+        User user = userService.findByUserName(username).orElseThrow(() -> {
+            throw new UsernameNotFoundException(username);
+        });
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }

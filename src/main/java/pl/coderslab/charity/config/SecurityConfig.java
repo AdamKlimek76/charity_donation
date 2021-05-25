@@ -13,15 +13,6 @@ import pl.coderslab.charity.service.SpringDataUserDetailsService;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    /*
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user@gmail.com").password("{noop}user123").roles("USER")
-                .and()
-                .withUser("admin@gmail.com").password("{noop}admin123").roles("ADMIN");
-    }
-     */
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -36,10 +27,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/institution/**", "/donation/**").authenticated()
                 .antMatchers("/institution/**", "/donation/**").hasAnyRole("USER", "ADMIN")
                 .and().formLogin()
-                .loginPage("/login")
-                .and().logout().logoutSuccessUrl("/logout")
+                .loginPage("/login").permitAll()
+                .defaultSuccessUrl("/", true)
+                .and()
+                .logout()
+                .logoutSuccessUrl("/")
+                .deleteCookies("JSESSIONID")
                 .permitAll()
-                .and().exceptionHandling().accessDeniedPage("/403");;
+                .and()
+                .exceptionHandling().accessDeniedPage("/403");
     }
 
     @Bean
