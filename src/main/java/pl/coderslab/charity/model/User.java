@@ -1,6 +1,8 @@
 package pl.coderslab.charity.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -25,7 +27,8 @@ public class User {
         this.roles = roles;
     }
 
-    public User(){}
+    public User() {
+    }
 
     public Long getId() {
         return id;
@@ -65,6 +68,19 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public void addRole(Role role) {
+        this.roles = new HashSet<>();
+        roles.add(role);
+    }
+
+    public void disable() {
+        setEnabled(0);
+    }
+
+    public void enable() {
+        setEnabled(1);
     }
 
     @Override

@@ -29,7 +29,7 @@
             <form:errors path="password" cssClass="error"/>
         </div>
         <div class="form-group">
-            <input type="password" name="password2" placeholder="powtórz hasło"/>
+            <input type="password" name="passwordChecked" placeholder="powtórz hasło"/>
         </div>
 
         <div class="form-group form-group--buttons">

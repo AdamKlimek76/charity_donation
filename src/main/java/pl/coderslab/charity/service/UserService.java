@@ -9,4 +9,6 @@ public interface UserService {
     Optional<User> findByUserName(String name);
 
     void saveUser(User user);
+
+    boolean doesUserExist(String username);
 }
