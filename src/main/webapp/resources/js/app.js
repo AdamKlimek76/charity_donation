@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
             this.$step.parentElement.hidden = this.currentStep >= 5;
 
             // TODO: get data from inputs and show them in summary
-          console.log(this.currentStep);
+
           if (this.currentStep === 5) {
 
                 // get inputs
@@ -231,17 +231,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 let summaryAddressAndDateTime = summary.querySelectorAll(".form-section--column > ul");
                 let summaryAddress = summaryAddressAndDateTime[0].querySelectorAll("li");
                 for (let i = 0; i < summaryAddress.length; i++) {
-                    summaryAddress[i].innerText = "";
                     summaryAddress[i].innerText = addressesAndTerms[i];
                 }
 
                 let summaryDateTime = summaryAddressAndDateTime[1].querySelectorAll("li");
                 for (let i = 0; i < summaryDateTime.length; i++) {
                     if (i < summaryDateTime.length - 1) {
-                        summaryDateTime[i].innerText = "";
                         summaryDateTime[i].innerText = addressesAndTerms[i + 4];
                     } else {
-                        summaryDateTime[i].innerText = "";
                         summaryDateTime[i].innerText = addedInformation.value;
                     }
                 }
